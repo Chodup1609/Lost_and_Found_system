@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Interface</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 20px;
+        }
+        .profile-container {
+            max-width: 400px;
+            margin: auto;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .profile-image {
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border: 2px solid #ccc;
+        }
+        .profile-info {
+            text-align: left;
+            margin-top: 20px;
+        }
+        .profile-info label {
+            font-weight: bold;
+        }
+        .profile-info input {
+            width: 100%;
+            margin: 5px 0;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .buttons button {
+            margin: 5px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .buttons button.save {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .buttons button.edit {
+            background-color: #2196F3;
+            color: white;
+        }
+        .buttons button.home {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <img src="default-profile.png" alt="Profile Image" id="profileImage" class="profile-image">
+        <br>
+        <button onclick="document.getElementById('fileInput').click()">Upload Picture</button>
+        <input type="file" id="fileInput" accept="image/*" style="display:none;" onchange="previewImage(event)">
+        <div class="profile-info">
+            <label for="name">Name:</label>
+            <input type="text" id="name" value="John Doe" disabled>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" value="john@example.com" disabled>
+            
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" value="1234567890" disabled>
+            
+            <label for="department">Department:</label>
+            <input type="text" id="department" value="Computer Science" disabled>
+            
+            <label for="course">Course:</label>
+            <input type="text" id="course" value="Bachelor's in IT" disabled>
+            
+            <label for="occupation">Occupation:</label>
+            <input type="text" id="occupation" value="Student" disabled>
+        </div>
+        <div class="buttons">
+            <button class="edit" onclick="enableEditing()">Edit Profile</button>
+            <button class="save" onclick="saveChanges()">Save Changes</button>
+            <a href="home.html"><button class="home">Back to Home</button></a>
+            
+        </div>
+    </div>
+
+    <script>
+        function previewImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('profileImage').src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function enableEditing() {
+            const inputs = document.querySelectorAll('.profile-info input');
+            inputs.forEach(input => input.disabled = false);
+        }
+
+        function saveChanges() {
+            const inputs = document.querySelectorAll('.profile-info input');
+            const userData = {};
+
+            inputs.forEach(input => {
+                userData[input.id] = input.value;
+                input.disabled = true; // Disable inputs after saving
+            });
+
+            // Store data locally (can replace with backend integration)
+            localStorage.setItem('profileData', JSON.stringify(userData));
+            alert('Profile updated successfully!');
+        }
+
+        // Load saved data if available
+        window.onload = function() {
+            const savedData = localStorage.getItem('profileData');
+            if (savedData) {
+                const userData = JSON.parse(savedData);
+                for (const key in userData) {
+                    const input = document.getElementById(key);
+                    if (input) input.value = userData[key];
+                }
+            }
+        };
+    </script>
+</body>
+</html>

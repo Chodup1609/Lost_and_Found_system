@@ -8,7 +8,7 @@
 
 /* Background */
 body {
-    background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+    background: url('image/istockphoto-1316589107-612x612.jpg') center/cover no-repeat, linear-gradient(to right, #4facfe, #00f2fe);
     height: 100vh;
     display: flex;
     justify-content: center;

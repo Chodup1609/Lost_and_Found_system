@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .notification {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .notification h4 {
+            margin: 0;
+            font-size: 16px;
+            color: #555;
+        }
+        .notification p {
+            margin: 5px 0 0;
+            font-size: 14px;
+            color: #888;
+        }
+        .notification .time {
+            font-size: 12px;
+            color: #aaa;
+        }
+        .clear-all {
+            display: block;
+            text-align: center;
+            margin: 20px 0;
+            padding: 10px 20px;
+            background-color: #f44336;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .clear-all:hover {
+            background-color: #d32f2f;
+        }
+        .empty-message {
+            text-align: center;
+            color: #aaa;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+        .back-button {
+            display: inline-block;
+            margin-bottom: 15px;
+            padding: 10px 20px;
+            background-color: #2196F3;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .back-button:hover {
+            background-color: #1976d2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="home.html" class="back-button" onclick="goBack()">Back</a>
+        <h2>Notifications</h2>
+        <div id="notifications">
+            <!-- Notifications will be dynamically added here -->
+            <div class="notification">
+                <div>
+                    <h4>Item Found: Blue Wallet</h4>
+                    <p>A wallet matching your report has been found.</p>
+                </div>
+                <span class="time">10 mins ago</span>
+            </div>
+            <div class="notification">
+                <div>
+                    <h4>Lost Item Report Approved</h4>
+                    <p>Your lost item report for "Red Backpack" has been approved.</p>
+                </div>
+                <span class="time">1 hour ago</span>
+            </div>
+        </div>
+        <button class="clear-all" onclick="clearNotifications()">Clear All Notifications</button>
+        <p id="emptyMessage" class="empty-message" style="display: none;">No notifications available.</p>
+    </div>
+
+    <script>
+        function clearNotifications() {
+            const notificationsDiv = document.getElementById('notifications');
+            const emptyMessage = document.getElementById('emptyMessage');
+
+            // Clear all notifications
+            notificationsDiv.innerHTML = '';
+
+            // Show empty message
+            emptyMessage.style.display = 'block';
+        }
+
+        function goBack() {
+            // Simulate going back (or redirect to a specific page)
+            alert('Going back...');
+            // Example: window.history.back();
+        }
+    </script>
+</body>
+</html>
