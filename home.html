@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JNEC Lost and Found System</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <div class="menu-bar">
+        <ul>
+            <li><a href="#profile"><i class="fas fa-user"></i> Profile</a></li>
+            <li><a href="#contact"><i class="fas fa-envelope"></i> Contact Us</a></li>
+            <li><a href="#logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </div>
+
+    <header>
+        <h1>JNEC Lost and Found System</h1>
+        <p>Helping you recover and report lost items efficiently</p>
+    </header>
+
+    <div class="container">
+        <div class="search-bar">
+            <input type="text" placeholder="Search lost or found items...">
+            <button><i class="fas fa-search"></i> Search</button>
+        </div>
+
+        <div class="section">
+            <!-- Report Lost Item Card -->
+            <div class="card" id="report-lost">
+                <i class="fas fa-search"></i>
+                <a href="report_lost_item.html">
+                    <h3>Report Lost Item</h3>
+                </a>
+                <p>Submit details of your lost item to help locate it.</p>
+            </div>
+
+            <!-- Report Found Item Card -->
+            <div class="card" id="report-found">
+                <i class="fas fa-box"></i>
+                <a href="report_found_item.html">
+                    <h3>Report Found Item</h3>
+                </a>
+                <p>Provide information about found items to identify owners.</p>
+            </div>
+
+            <!-- View Lost Items Card -->
+            <div class="card" id="view-lost">
+                <i class="fas fa-eye"></i>
+                <a href="view_lost_items.html">
+                    <h3>View Lost Items</h3>
+                </a>
+                <p>Browse items reported as lost by others.</p>
+            </div>
+
+            <!-- View Found Items Card -->
+            <div class="card" id="view-found">
+                <i class="fas fa-check"></i>
+                <a href="view_found_items.html">
+                    <h3>View Found Items</h3>
+                </a>
+                <p>Explore items reported as found to locate owners.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

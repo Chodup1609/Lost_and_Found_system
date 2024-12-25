@@ -1,0 +1,119 @@
+/* General Styles */
+body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+    font-size: 14px; /* Reduced font size for compactness */
+}
+
+/* Back Arrow in Header */
+header {
+    background-color: #2a9d8f;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+}
+
+.back-arrow {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 1.2em;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.back-arrow i {
+    margin-right: 8px;
+}
+
+.back-arrow:hover {
+    color: #1e6f5c;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em; /* Reduced header size */
+}
+
+header p {
+    margin: 5px 0 0;
+    font-size: 0.9em; /* Reduced text size */
+}
+
+/* Form Container */
+.container {
+    padding: 15px; /* Reduced padding */
+    max-width: 500px; /* Reduced width */
+    margin: 20px auto;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 12px; /* Reduced space between inputs */
+}
+
+.form-group label {
+    font-size: 1em; /* Reduced font size */
+    color: #264653;
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px; /* Reduced space */
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 8px; /* Reduced padding */
+    font-size: 0.9em; /* Reduced font size */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.form-group textarea {
+    resize: vertical;
+    height: 80px; /* Reduced height */
+}
+
+button {
+    padding: 8px 16px; /* Reduced padding */
+    font-size: 1em; /* Reduced font size */
+    color: white;
+    background-color: #2a9d8f;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Reduced gap */
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #1e6f5c;
+}
+
+/* Footer */
+footer {
+    background-color: #264653;
+    color: white;
+    text-align: center;
+    padding: 8px; /* Reduced padding */
+    margin-top: 15px; /* Reduced margin */
+    font-size: 0.9em; /* Reduced font size */
+}

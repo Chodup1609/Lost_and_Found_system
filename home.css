@@ -1,0 +1,164 @@
+/* Menu Bar */
+.menu-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 150px; /* Reduced width */
+  background-color: #264653;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10px; /* Reduced padding */
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
+}
+
+.menu-bar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.menu-bar ul li {
+  width: 100%;
+}
+
+.menu-bar ul li a {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px; /* Reduced padding */
+  color: white;
+  text-decoration: none;
+  font-size: 0.9em; /* Reduced font size */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.menu-bar ul li a i {
+  margin-right: 8px;
+  font-size: 1em; /* Reduced icon size */
+}
+
+.menu-bar ul li a:hover {
+  background-color: #2a9d8f;
+  color: #ffffff;
+}
+
+/* Main Content */
+body {
+  font-family: 'Times New Roman', Times, serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+  display: flex;
+  min-height: 100vh; /* Full viewport height */
+  margin-left: 150px; /* Adjusted for reduced menu width */
+  flex-direction: column;
+}
+
+header {
+  background-color: #2a9d8f;
+  color: white;
+  padding: 15px; /* Reduced padding */
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.8em; /* Reduced font size */
+}
+
+nav {
+  background-color: #264653;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5px 0; /* Reduced padding */
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.9em; /* Reduced font size */
+}
+
+nav a:hover {
+  color: #f4a261;
+}
+
+.container {
+  padding: 10px; /* Reduced padding */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0; /* Reduced margin */
+  width: 100%;
+}
+
+.search-bar input {
+  padding: 8px; /* Reduced padding */
+  font-size: 0.9em; /* Reduced font size */
+  width: 60%; /* Adjusted width */
+  border: 2px solid #264653;
+  border-radius: 5px;
+  outline: none;
+}
+
+.search-bar button {
+  padding: 8px 15px; /* Reduced padding */
+  font-size: 0.9em; /* Reduced font size */
+  color: white;
+  background-color: #2a9d8f;
+  border: none;
+  border-radius: 5px;
+  margin-left: 5px; /* Reduced margin */
+  cursor: pointer;
+}
+
+.search-bar button:hover {
+  background-color: #1e6f5c;
+}
+
+.section {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px; /* Reduced gap */
+  width: 100%;
+}
+
+.card {
+  background-color: white;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1); /* Slightly reduced shadow */
+  border-radius: 6px; /* Reduced border radius */
+  padding: 15px; /* Reduced padding */
+  text-align: center;
+  flex: 1 1 200px; /* Adjusted size */
+  max-width: 250px; /* Adjusted max width */
+}
+
+.card i {
+  font-size: 2em; /* Reduced icon size */
+  color: #2a9d8f;
+}
+
+.card h3 {
+  margin: 8px 0; /* Reduced margin */
+  font-size: 1.2em; /* Reduced font size */
+}
+
+footer {
+  background-color: #264653;
+  color: white;
+  text-align: center;
+  padding: 5px; /* Reduced padding */
+  font-size: 0.8em; /* Reduced font size */
+  width: 100%;
+}
