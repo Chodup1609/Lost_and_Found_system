@@ -1,11 +1,11 @@
 /* General Styles */
 body {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Times New Roman', Times, serif; /* Unified font style */
     margin: 0;
     padding: 0;
     background-color: #f4f4f9;
     color: #333;
-    font-size: 14px; /* Reduced font size for compactness */
+    font-size: 14px; /* Compact font size */
 }
 
 /* Back Arrow in Header */
@@ -26,10 +26,11 @@ header {
     text-decoration: none;
     display: flex;
     align-items: center;
+    gap: 6px; /* Spacing between icon and text */
 }
 
 .back-arrow i {
-    margin-right: 8px;
+    margin-right: 0; /* Removed margin for consistent gap */
 }
 
 .back-arrow:hover {
@@ -66,10 +67,11 @@ form {
 }
 
 .form-group label {
-    font-size: 1em; /* Reduced font size */
+    font-size: 1em; /* Unified font size */
     color: #264653;
     display: flex;
     align-items: center;
+    gap: 6px; /* Spacing between icon and label text */
     margin-bottom: 4px; /* Reduced space */
 }
 
@@ -78,20 +80,23 @@ form {
 .form-group textarea {
     width: 100%;
     padding: 8px; /* Reduced padding */
-    font-size: 0.9em; /* Reduced font size */
+    font-size: 0.9em; /* Unified font size */
+    font-family: 'Times New Roman', Times, serif; /* Ensuring Times New Roman */
     border: 1px solid #ccc;
     border-radius: 5px;
     outline: none;
 }
 
 .form-group textarea {
-    resize: vertical;
-    height: 80px; /* Reduced height */
+    height: auto; /* Removed height to let it grow based on content */
+    resize: vertical; /* Allow resizing vertically */
 }
 
+/* Button */
 button {
     padding: 8px 16px; /* Reduced padding */
-    font-size: 1em; /* Reduced font size */
+    font-size: 1em; /* Unified font size */
+    font-family: 'Times New Roman', Times, serif; /* Ensuring Times New Roman */
     color: white;
     background-color: #2a9d8f;
     border: none;
@@ -100,7 +105,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px; /* Reduced gap */
+    gap: 6px; /* Spacing between icon and button text */
     transition: background-color 0.3s ease;
 }
 
@@ -115,5 +120,6 @@ footer {
     text-align: center;
     padding: 8px; /* Reduced padding */
     margin-top: 15px; /* Reduced margin */
-    font-size: 0.9em; /* Reduced font size */
+    font-size: 0.9em; /* Unified font size */
+    font-family: 'Times New Roman', Times, serif; /* Ensuring Times New Roman */
 }

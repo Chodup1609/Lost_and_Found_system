@@ -88,11 +88,15 @@ form {
 }
 
 .form-group textarea {
-    height: auto; /* Removed height to let it grow based on content */
-    resize: vertical; /* Allow resizing vertically */
+    resize: vertical;
+    height: 80px; /* Reduced height */
 }
 
-/* Button */
+/* Removed description field */
+.form-group input[type="file"] {
+    margin-bottom: 10px;
+}
+
 button {
     padding: 8px 16px; /* Reduced padding */
     font-size: 1em; /* Unified font size */

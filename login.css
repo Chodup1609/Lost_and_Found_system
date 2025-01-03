@@ -60,8 +60,8 @@ body {
 /* Login Button */
 .btn {
     width: 100%;
-    background: #4facfe;
-    color: black;
+    background:#2a9d8f;
+    color: white;
     padding: 10px 20px;
     font-size: 1rem;
     font-weight: bold;
