@@ -6,8 +6,10 @@
     <title>Profile Interface</title>
     <style>
         body {
+            background: url('image/istockphoto-1316589107-612x612.jpg') center/cover no-repeat, linear-gradient(to right, #4facfe, #00f2fe);
             font-family: 'Times New Roman', Times, serif;
             margin: 20px;
+            color: #333;
         }
         .profile-container {
             max-width: 400px;
@@ -16,6 +18,8 @@
             border: 1px solid #ddd;
             border-radius: 10px;
             padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         .profile-image {
             border-radius: 50%;
@@ -23,6 +27,7 @@
             height: 120px;
             object-fit: cover;
             border: 2px solid #ccc;
+            margin-bottom: 10px;
         }
         .profile-info {
             text-align: left;
@@ -30,6 +35,8 @@
         }
         .profile-info label {
             font-weight: bold;
+            display: block;
+            margin-top: 10px;
         }
         .profile-info input {
             width: 100%;
@@ -37,6 +44,7 @@
             padding: 8px;
             border: 1px solid #ddd;
             border-radius: 5px;
+            box-sizing: border-box;
         }
         .buttons {
             margin-top: 20px;
@@ -47,18 +55,39 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
         .buttons button.save {
             background-color: #4CAF50;
             color: white;
         }
+        .buttons button.save:hover {
+            background-color: #45a049;
+        }
         .buttons button.edit {
             background-color: #2196F3;
             color: white;
         }
+        .buttons button.edit:hover {
+            background-color: #1976d2;
+        }
         .buttons button.home {
             background-color: #f44336;
             color: white;
+        }
+        .buttons button.home:hover {
+            background-color: #d32f2f;
+        }
+        @media (max-width: 480px) {
+            body {
+                margin: 10px;
+            }
+            .profile-container {
+                padding: 15px;
+            }
+            .buttons button {
+                padding: 8px 15px;
+            }
         }
     </style>
 </head>
@@ -71,19 +100,19 @@
         <div class="profile-info">
             <label for="name">Name:</label>
             <input type="text" id="name" value="John Doe" disabled>
-            
+
             <label for="email">Email:</label>
             <input type="email" id="email" value="john@example.com" disabled>
-            
+
             <label for="phone">Phone:</label>
             <input type="tel" id="phone" value="1234567890" disabled>
-            
+
             <label for="department">Department:</label>
             <input type="text" id="department" value="Computer Science" disabled>
-            
+
             <label for="course">Course:</label>
             <input type="text" id="course" value="Bachelor's in IT" disabled>
-            
+
             <label for="occupation">Occupation:</label>
             <input type="text" id="occupation" value="Student" disabled>
         </div>
@@ -91,11 +120,11 @@
             <button class="edit" onclick="enableEditing()">Edit Profile</button>
             <button class="save" onclick="saveChanges()">Save Changes</button>
             <a href="home.html"><button class="home">Back to Home</button></a>
-            
         </div>
     </div>
 
     <script>
+        // Function to preview uploaded profile image
         function previewImage(event) {
             const file = event.target.files[0];
             if (file) {
@@ -107,23 +136,51 @@
             }
         }
 
+        // Function to enable editing of profile fields
         function enableEditing() {
             const inputs = document.querySelectorAll('.profile-info input');
             inputs.forEach(input => input.disabled = false);
         }
 
+        // Function to save changes with basic validation
         function saveChanges() {
             const inputs = document.querySelectorAll('.profile-info input');
             const userData = {};
+            let isValid = true;
 
             inputs.forEach(input => {
-                userData[input.id] = input.value;
-                input.disabled = true; // Disable inputs after saving
+                if (input.type === 'email' && !validateEmail(input.value)) {
+                    alert('Please enter a valid email address.');
+                    isValid = false;
+                }
+                if (input.type === 'tel' && !validatePhone(input.value)) {
+                    alert('Please enter a valid phone number.');
+                    isValid = false;
+                }
+                if (isValid) {
+                    userData[input.id] = input.value;
+                    input.disabled = true;
+                }
             });
 
-            // Store data locally (can replace with backend integration)
-            localStorage.setItem('profileData', JSON.stringify(userData));
-            alert('Profile updated successfully!');
+            if (isValid) {
+                const profileImageSrc = document.getElementById('profileImage').src;
+                userData['profileImage'] = profileImageSrc;
+                localStorage.setItem('profileData', JSON.stringify(userData));
+                alert('Profile updated successfully!');
+            }
+        }
+
+        // Validate email format
+        function validateEmail(email) {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailPattern.test(email);
+        }
+
+        // Validate phone number format
+        function validatePhone(phone) {
+            const phonePattern = /^\d{10}$/;
+            return phonePattern.test(phone);
         }
 
         // Load saved data if available
@@ -131,9 +188,14 @@
             const savedData = localStorage.getItem('profileData');
             if (savedData) {
                 const userData = JSON.parse(savedData);
+
                 for (const key in userData) {
                     const input = document.getElementById(key);
                     if (input) input.value = userData[key];
+                }
+
+                if (userData.profileImage) {
+                    document.getElementById('profileImage').src = userData.profileImage;
                 }
             }
         };
