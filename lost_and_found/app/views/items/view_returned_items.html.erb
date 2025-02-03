@@ -1,0 +1,58 @@
+<header>
+  <a href="<%= home_index_path %>" class="back-arrow"><i class="fas fa-arrow-left"></i> Back</a>
+  <h1>Returned Items</h1>
+  <p>Browse the returned items reported by others.</p>
+</header>
+
+<div class="container" data-controller="lightbox">
+  <div class="item-cards">
+    <% @items.each do |item| %>
+      <div class="item-card" data-controller="slider">
+        <% if item.images.attached? %>
+          <% if item.images.count < 3 %>
+            <div class="item-images-min">
+              <% item.images.each do |image| %>
+                <%= image_tag image, alt: item.name, class: "item-image", data: { action: "click->lightbox#openPreview" } %>
+              <% end %>
+            </div>
+          <% else %>
+            <div class="item-images-slider">
+              <div class="item-images">
+                <div class="item-images-track" data-slider-target="track">
+                  <% item.images.each do |image| %>
+                    <%= image_tag image, alt: item.name, class: "item-image", data: { action: "click->lightbox#openPreview" } %>
+                  <% end %>
+                </div>
+              </div>
+              <button type="button" class="slider-btn prev-btn" data-action="click->slider#prev">&lt;</button>
+              <button type="button" class="slider-btn next-btn" data-action="click->slider#next">&gt;</button>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="item-images-min">
+            <%= image_tag 'default_item.jpeg', alt: item.name, class: "item-image" %>
+          </div>
+        <% end %>
+        <div class="item-card-content">
+          <h2 class="item-name"><%= item.name %></h2>
+          <p class="item-owner-name"><strong>Owner:</strong><%= item.owner_name %></p>
+          <p class="item-finder-name"><strong>Finder:</strong><%= item.finder_name %></p>
+          <p class="item-contact"><strong>Date:</strong> <%= item.created_at.strftime("%B %d, %Y") %></p>
+          <p class="item-status"><strong>Status:</strong> <%= item.status.capitalize %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Pagination controls -->
+  <div class="pagination">
+    <%= paginate @items %>
+  </div>
+
+  <!-- Lightbox overlay for preview -->
+  <div class="lightbox-overlay" data-lightbox-target="overlay" style="display: none;">
+    <span class="close" data-action="click->lightbox#closePreview">&times;</span>
+    <img data-lightbox-target="image" class="lightbox-image" src="" alt=""/>
+  </div>
+</div>
+

@@ -1,0 +1,33 @@
+<style>
+    body {
+        font-family: 'Times New Roman', Times, serif;
+        margin: 20px;
+        background-color: #f4f4f9;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: auto;
+        background: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 20px;
+    }
+</style>
+<div class="container">
+  <%= link_to 'Back', home_index_path, class: 'back-button' %> <!-- Assuming you have a home route -->
+  <h2>Notifications</h2>
+
+  <div id="notifications">
+    <%= render partial: 'notifications/notifications_list' %>
+  </div>
+  <% if @notifications.present? %>
+    <%= button_to 'Clear All Notifications', clear_all_notifications_path, method: :post, class: 'clear-all', data: { controller: 'notifications', action: 'click->notifications#clearNotifications' } %>
+  <% end %>
+</div>

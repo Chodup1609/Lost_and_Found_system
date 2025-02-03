@@ -1,0 +1,13 @@
+<% @notifications.each do |notification| %>
+  <div class="notification">
+    <div>
+      <h4><%= notification.title %></h4>
+      <p><%= notification.message %></p>
+    </div>
+    <span class="time"><%= time_ago_in_words(notification.created_at) %> ago</span>
+  </div>
+<% end %>
+
+<% if @notifications.empty? %>
+  <p id="emptyMessage" class="empty-message">No notifications available.</p>
+<% end %>

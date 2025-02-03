@@ -1,0 +1,974 @@
+/* Application Styles Manifest
+ * Organized for maintainability and efficiency
+ */
+
+/* General Variables */
+:root {
+    --primary-color: #2a9d8f;
+    --primary-hover: #1e6f5c;
+    --secondary-color: #264653;
+    --light-color: #f4f4f9;
+    --white: #ffffff;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: 0.3s ease;
+    --font-family: 'Times New Roman', Times, serif;
+    --padding: 15px;
+}
+
+/* General Styles */
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-color);
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+.container {
+    max-width: 1920px; /* Increase max-width for larger container */
+    margin: 0 auto; /* Center align the container */
+    padding: 20px; /* Add some padding for spacing */
+    background-color: #fff; /* Optional: Add background for better visibility */
+    border-radius: 8px; /* Smooth corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for better emphasis */
+}
+
+
+/* Header */
+header {
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    box-shadow: var(--shadow);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+header p {
+    margin: 5px 0 0;
+    font-size: 1em;
+    font-weight: lighter;
+}
+
+.back-arrow {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 1.2em;
+    color: var(--white);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color var(--transition);
+}
+
+.back-arrow:hover {
+    color: var(--primary-hover);
+}
+
+/* Flash Messages */
+.flash-container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.flash {
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+    animation: fadeInOut 5s ease-out 0.2s;
+    opacity: 0;
+}
+
+.flash.notice {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.flash.alert {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.flash.alert-warning {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.flash.info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+@keyframes fadeInOut {
+    0%, 100% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    10%, 90% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Cards */
+.item-cards {
+    display: grid; /* Use grid layout */
+    grid-template-columns: repeat(2, minmax(250px, 1fr));
+    gap: 20px; /* Add spacing between items */
+    margin-top: 20px; /* Add spacing above the grid */
+}
+
+.item-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    width: 100%; /* Ensure the card takes full width */
+    max-width: 300px; /* Set a max-width for consistency */
+    margin: 0 auto; /* Center the card */
+}
+
+
+.item-card:hover {
+    transform: translateY(-5px); /* Lift the card slightly on hover */
+}
+
+.item-card-content {
+    padding: 20px;
+}
+
+.item-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.item-description, .item-location, .item-contact, .item-status .item-owner-name .item-finder-name {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.item-status {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.item-owner-name {
+    font-weight: bold;
+    color: #777;
+}
+
+.item-finder-name {
+    font-weight: bold;
+    color: #777;
+}
+
+/* General Pagination Style */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px; /* Add spacing between items */
+}
+
+/* Pagination links */
+.pagination .page {
+    padding: 10px 15px;
+    border: 1px solid var(--primary-color);
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--primary-color);
+    transition: background-color var(--transition), transform var(--transition);
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination .page:hover {
+    background-color: #f0f8ff;
+}
+
+.pagination .page.current {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+/* Prev and Next Arrows */
+.pagination .prev, .pagination .next {
+    padding: 10px 15px;
+    border: 1px solid var(--primary-color);
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--primary-color);
+    transition: background-color var(--transition), transform var(--transition);
+    font-size: 18px; /* Slightly bigger size for arrows */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--light-color); /* Lighter background for arrows */
+}
+
+.pagination .prev:hover, .pagination .next:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+    transform: scale(1.1); /* Slight grow effect on hover */
+}
+
+.pagination .prev::before {
+    content: '←'; /* Left arrow */
+}
+
+.pagination .next::before {
+    content: '→'; /* Right arrow */
+}
+
+/* Disabled Pages */
+.pagination .disabled {
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+
+/* Form-specific styling */
+form {
+    width: 100%; /* Make form take full width of container */
+}
+
+.form-group {
+    margin-bottom: 15px; /* Space between input fields */
+}
+
+.form-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.submit-button {
+    width: 100%; /* Make the submit button span the width of the form */
+    background-color: #02897a;
+    color: #fff;
+    padding: 12px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.submit-button i {
+    margin-right: 8px; /* Add some spacing between icon and text */
+}
+
+.submit-button:hover {
+    background-color: #02695e; /* Darker shade on hover */
+}
+
+
+/* Preview container styles */
+#image-preview-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.preview-item {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.preview-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.remove-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+
+.item-images {
+    display: flex;
+    overflow: hidden;
+}
+
+.item-images-track {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+}
+
+.item-image {
+    width: 100%; /* Ensure the image takes full width of the card */
+    height: 200px; /* Set a fixed height */
+    object-fit: cover; /* Maintain aspect ratio and cover the area */
+    border-radius: 5px; /* Rounded corners */
+    border: 1px solid #ddd; /* Border around the images */
+}
+
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox-overlay img {
+    max-width: 80%;
+    max-height: 80%;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+.item-images-slider {
+    position: relative;
+    overflow: hidden; /* Hide images outside the visible area */
+    width: 100%;
+    height: 120px; /* Fixed height for slider */
+    margin-bottom: 15px; /* Space below slider */
+}
+
+.item-images-track {
+    transition: transform 0.3s ease-in-out; /* Smooth sliding effect */
+}
+
+.item-images-min {
+    display: flex; /* Arrange images in a horizontal row */
+    transition: transform 0.3s ease-in-out; /* Smooth sliding effect */
+    justify-content: center;
+}
+
+.item-image {
+    flex-shrink: 0; /* Prevent shrinking */
+    width: 120px; /* Fixed width for each image */
+    height: 120px; /* Square images */
+    object-fit: cover; /* Maintain aspect ratio and fill the box */
+    border-radius: 5px; /* Rounded corners */
+    border: 1px solid #ddd; /* Border around the images */
+    margin-right: 10px; /* Spacing between images */
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+/* Hide modal by default */
+.lightbox.hidden {
+    display: none;
+}
+
+/* Overlay background */
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+}
+
+/* Content inside the modal */
+.lightbox-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+    max-width: 80%;
+    max-height: 80%;
+    background: white;
+    padding: 20px;
+}
+
+/* Image styling */
+.lightbox-image {
+    width: 100%;
+    height: auto;
+}
+
+/* Close button */
+.lightbox-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+}
+
+
+.sidebar {
+    z-index: 9999;
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #264653;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background-color: #2a9d8f;
+    text-shadow: 0 0 5px white;
+}
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 25px;
+    margin-left: 50px;
+    color: white;
+}
+
+/* Open Button */
+.openbtn {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 10px;
+    cursor: pointer;
+    background-color: #264653;
+    color: white;
+    border: none;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.openbtn:hover {
+    background-color: #2a9d8f;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    width: 100%;
+}
+
+.search-bar input {
+    padding: 10px;
+    font-size: 1em;
+    width: 60%;
+    border: 2px solid #264653;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.search-bar input:focus {
+    border-color: #2a9d8f;
+    box-shadow: 0 0 5px #2a9d8f;
+}
+
+.search-bar button {
+    padding: 10px 20px;
+    font-size: 1em;
+    color: white;
+    background-color: #264653;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.search-bar button:hover {
+    background-color: #2a9d8f;
+    transform: scale(1.05);
+}
+
+/* Cards Section */
+.section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns */
+    grid-gap: 20px; /* Space between cards */
+    width: 100%;
+    padding: 20px;
+}
+
+.card {
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card i {
+    font-size: 2.5em;
+    color: #2a9d8f;
+    margin-bottom: 10px;
+}
+
+.card h3 {
+    margin: 10px 0;
+    font-size: 1.3em;
+    color: #264653;
+}
+
+.card p {
+    font-size: 0.9em;
+    color: #555;
+}
+
+.card a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Login Container */
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    background: white;
+    color: black;
+    border-radius: 10px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
+    padding: 30px 20px;
+}
+
+/* Login Form Header */
+.login-form h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.input-field {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.input-field i {
+    margin-right: 10px;
+    color: #888;
+}
+
+.input-field input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 1rem;
+}
+
+/* Login Button */
+.btn {
+    width: 100%;
+    background: #2a9d8f;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background: #00aaff;
+}
+
+/* Links */
+.links {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.links a {
+    color: #333;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 0.9rem;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+
+
+.profile-container {
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.profile-image {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border: 2px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.profile-info {
+    text-align: left;
+    margin-top: 20px;
+}
+
+.profile-info label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+}
+
+.profile-info input {
+    width: 100%;
+    margin: 5px 0;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+.buttons button {
+    margin: 5px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.buttons button.save {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.buttons button.save:hover {
+    background-color: #45a049;
+}
+
+.buttons .home {
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none; /* Removes underline from links */
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.buttons .home:hover {
+    background-color: #d32f2f;
+}
+
+#new-found-item-fields, #existing-lost-item-fields {
+    display: none;
+}
+
+#new-found-item-fields.active, #existing-lost-item-fields.active {
+    display: block;
+}
+
+.item-dropdown {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+    .item-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        margin: 10px;
+    }
+
+    .profile-container {
+        padding: 15px;
+    }
+
+    .buttons button {
+        padding: 8px 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .item-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 300px) {
+    .container {
+        max-width: 1920px; /* Even larger width on wide screens */
+    }
+}
+
+
+/* Ensure the item cards have a consistent size */
+.item-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    width: 100%; /* Ensure the card takes full width */
+    max-width: 300px; /* Set a max-width for consistency */
+    margin: 0 auto; /* Center the card */
+}
+
+/* Ensure the images have a consistent size */
+.item-image {
+    width: 100%; /* Ensure the image takes full width of the card */
+    height: 200px; /* Set a fixed height */
+    object-fit: cover; /* Maintain aspect ratio and cover the area */
+    border-radius: 5px; /* Rounded corners */
+    border: 1px solid #ddd; /* Border around the images */
+}
+
+/* Ensure the item images container has a consistent size */
+.item-images-min, .item-images-slider {
+    width: 100%;
+    height: 200px; /* Set a fixed height */
+    overflow: hidden; /* Hide overflow */
+    position: relative; /* For positioning buttons */
+}
+
+/* Adjust the slider buttons */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+/* Ensure the item card content has consistent spacing */
+.item-card-content {
+    padding: 20px;
+}
+
+.item-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.item-description, .item-location, .item-contact, .item-status {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.item-status {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+
+.notification {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.notification h4 {
+    margin: 0;
+    font-size: 16px;
+    color: #555;
+}
+
+.notification p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #888;
+}
+
+.notification .time {
+    font-size: 12px;
+    color: #aaa;
+}
+
+.clear-all {
+    display: block;
+    text-align: center;
+    margin: 20px 0;
+    padding: 10px 20px;
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.clear-all:hover {
+    background-color: #d32f2f;
+}
+
+.empty-message {
+    text-align: center;
+    color: #aaa;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.back-button {
+    display: inline-block;
+    margin-bottom: 15px;
+    padding: 10px 20px;
+    background-color: #2196F3;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.back-button:hover {
+    background-color: #1976d2;
+}

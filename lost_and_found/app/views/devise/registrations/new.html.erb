@@ -1,0 +1,63 @@
+<style>
+    body {
+        background: url(<%= asset_path('login.jpg') %>) center/cover no-repeat, linear-gradient(to right, #4facfe, #00f2fe);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        color: #333;
+
+    }
+</style>
+
+<div class="login-container">
+  <div class="login-form">
+    <h1><i class="fas fa-user-plus"></i> Sign Up</h1>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { onsubmit: "showSuccessMessage(event)" }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <!-- Full Name Field -->
+      <div class="input-field">
+        <i class="fas fa-user"></i>
+        <%= f.text_field :name, placeholder: "Full Name", required: true, autofocus: true %>
+      </div>
+
+      <!-- Email Field -->
+      <div class="input-field">
+        <i class="fas fa-envelope"></i>
+        <%= f.email_field :email, placeholder: "Email", required: true, pattern: "^[a-zA-Z0-9]+\.jnec@rub\.edu\.bt$", title: "Email must be in the format username.jnec@rub.edu.bt, where username can contain letters, numbers, and dots" %>
+      </div>
+
+      <!-- Contact Number Field -->
+      <div class="input-field">
+        <i class="fas fa-phone"></i>
+        <%= f.telephone_field :contact_number, placeholder: "Contact Number",
+                              pattern: "^(17|77)\\d{6}$",
+                              title: "Phone number must be 8 digits and start with 17 or 77",
+                              required: true %>
+      </div>
+
+      <!-- Password Field -->
+      <div class="input-field">
+        <i class="fas fa-lock"></i>
+        <%= f.password_field :password, placeholder: "Password", required: true, autocomplete: "new-password" %>
+      </div>
+
+      <!-- Password Confirmation Field -->
+      <div class="input-field">
+        <i class="fas fa-lock"></i>
+        <%= f.password_field :password_confirmation, placeholder: "Confirm Password", required: true, autocomplete: "new-password" %>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn">Sign Up</button>
+    <% end %>
+
+    <!-- Links -->
+    <div class="links">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>
+

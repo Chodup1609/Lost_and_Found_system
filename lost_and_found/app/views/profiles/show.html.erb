@@ -1,0 +1,38 @@
+<style>
+    body {
+        background: url(<%= asset_path('login.jpg') %>) center/cover no-repeat, linear-gradient(to right, #4facfe, #00f2fe);
+        font-family: 'Times New Roman', Times, serif;
+        margin: 20px;
+        color: #333;
+    }
+</style>
+<div class="profile-container" data-controller="profile">
+  <%= form_with model: @user, url: profile_path, local: true do |f| %>
+    <!--    <img src="<%#= asset_path(@user.profile_image || 'default_profile.png') %>" alt="Profile Image" id="profileImage" class="profile-image">-->
+    <%= image_tag (@user.profile_image.attached? ? @user.profile_image : 'default_profile.png'), id: 'profileImage', alt: 'profile image', class: "profile-image" %>
+
+    <br>
+    <%= f.file_field :profile_image, id: "fileInput", accept: "image/*", style: "display:none;", data: { action: 'change->profile#changePic' } %>
+    <button onclick="document.getElementById('fileInput').click(); return false;">Upload Picture</button>
+    <div class="profile-info">
+      <%= f.label :name %>
+      <%= f.text_field :name, value: @user.name %>
+
+      <%= f.label :contact_number %>
+      <%= f.text_field :contact_number, value: @user.contact_number %>
+
+      <%= f.label :department %>
+      <%= f.text_field :department, value: @user.department %>
+
+      <%= f.label :course %>
+      <%= f.text_field :course, value: @user.course %>
+
+      <%= f.label :occupation %>
+      <%= f.text_field :occupation, value: @user.occupation %>
+    </div>
+    <div class="buttons">
+      <button class="save" type="submit">Save Changes</button>
+      <%= link_to "Back to Home", home_index_path, class: "buttons home" %>
+    </div>
+  <% end %>
+</div>

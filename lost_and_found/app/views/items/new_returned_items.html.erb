@@ -1,0 +1,43 @@
+<header>
+  <!-- Back Arrow in Header -->
+  <a href="<%= home_index_path %>" class="back-arrow"><i class="fas fa-arrow-left"></i> Back</a>
+  <h1>Report Returned Item</h1>
+  <p>Help others by reporting a returned item.</p>
+</header>
+
+<div class="container">
+  <%= form_with model: @returned_item, url: report_returned_items_items_path, html: { id: "report-form", enctype: "multipart/form-data" }, data: { controller: "image-upload" }, local: true do |form| %>
+    <div class="form-group">
+      <div data-controller="item-preview">
+        <%= form.select :item_id,
+                        options_for_select(Item.found.map do |item|
+                          ["#{item.name} - #{item.location} - #{item.description.truncate(30)}",
+                           item.id, { 'data-img-src' => item.images.first.present? ? item.images.first.url : asset_path('default_item.jpeg') }]
+                        end),
+                        {},
+                        { class: "form-input", data: { item_preview_target: "select", action: "change->item-preview#updatePreview" } }
+        %>
+
+        <div data-item-preview-target="preview"></div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :owner_name, class: "form-label" do %>
+        <i class="fas fa-user"></i> Owner Name
+      <% end %>
+      <%= form.text_field :owner_name, id: "owner-name", placeholder: "Enter the owner's name", class: "form-input", required: true %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :finder_name, class: "form-label" do %>
+        <i class="fas fa-user-tie"></i> Finder Name
+      <% end %>
+      <%= form.text_field :finder_name, id: "finder-name", placeholder: "Enter the finder's name", class: "form-input", required: true %>
+    </div>
+
+    <%= form.button(type: 'submit', class: "submit-button") do %>
+      <i class="fas fa-paper-plane"></i> Submit
+    <% end %>
+  <% end %>
+</div>

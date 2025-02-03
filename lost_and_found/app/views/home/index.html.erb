@@ -1,0 +1,65 @@
+<%= render "home/side_nav" %>
+
+<header style="z-index: -1">
+  <h1>JNEC Lost and Found System</h1>
+  <p>Helping you recover and report lost items efficiently</p>
+</header>
+
+<div class="container">
+  <div class="search-bar">
+    <%= form_tag(search_items_path, method: :get, class: 'search-bar') do %>
+      <%= text_field_tag :query, params[:query], placeholder: "Search items..." %>
+      <button type="submit"><i class="fas fa-search"></i> Search</button>
+    <% end %>
+  </div>
+
+  <div class="section">
+    <div class="card" id="report-lost">
+      <i class="fas fa-search"></i>
+      <a href="<%= report_lost_items_items_path %>">
+        <h3>Report Lost Item</h3>
+      </a>
+      <p>Submit details of your lost item to help locate it.</p>
+    </div>
+
+    <div class="card" id="report-found">
+      <i class="fas fa-box"></i>
+      <a href="<%= report_found_items_items_path %>">
+        <h3>Report Found Item</h3>
+      </a>
+      <p>Provide information about found items to identify owners.</p>
+    </div>
+
+    <div class="card" id="report-returned">
+      <i class="fas fa-undo"></i>
+      <a href="<%= report_returned_items_items_path %>">
+        <h3>Report Returned Item</h3>
+      </a>
+      <p>Submit details about an item that has been returned to its owner.</p>
+    </div>
+
+    <div class="card" id="view-lost">
+      <i class="fas fa-eye"></i>
+      <a href="<%= view_lost_items_items_path %>">
+        <h3>View Lost Items</h3>
+      </a>
+      <p>Browse items reported as lost by others.</p>
+    </div>
+
+    <div class="card" id="view-found">
+      <i class="fas fa-check"></i>
+      <a href="<%= view_found_items_items_path %>">
+        <h3>View Found Items</h3>
+      </a>
+      <p>Explore items reported as found to locate owners.</p>
+    </div>
+
+    <div class="card" id="view-returned-item">
+      <i class="fas fa-box-open"></i>
+      <a href="<%= view_returned_items_items_path %>">
+        <h3>View Returned Item</h3>
+      </a>
+      <p>Check the details of items that have been returned to the owner.</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<div data-controller="home">
+  <button class="openbtn" data-action="click->home#openSidebar">☰ Menu</button>
+
+  <div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" data-action="click->home#closeSidebar">×</a>
+    <%= link_to "Profile", profile_path %>
+    <%= link_to "Notifications", notifications_path %>
+    <%= link_to "Logout", destroy_user_session_path, method: :delete, 'data-turbo-method': :delete, data: { confirm: "Are you sure you want to log out?" } %>
+  </div>
+</div>
